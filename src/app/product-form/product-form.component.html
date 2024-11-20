@@ -1,0 +1,65 @@
+<div class="row m-3" *ngIf="!updataProduct && !createProduct">
+    <div>Mit szeretne a termékkel?</div>
+    <button class="col btn btn-primary" (click)="create()">Hozzáadás</button>
+    <button class="col btn btn-primary" (click)="update()">Módosítás</button>
+</div>
+<div class="row m-3" *ngIf="updataProduct && !productLoaded">
+    <div>Melyik terméket szeretné frissíteni?</div>
+    <form class="form w-50" [formGroup]="productSearchForm" >
+        <div class="row m-3">
+            <label for="productId">Termék id:</label>
+            <input class="col form-field" name="productId" formControlName="productId" />
+        </div>
+        <button class="col btn btn-primary" (click)="search()">Keresés</button>
+    </form>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-center" *ngIf="(updataProduct && productLoaded) || createProduct" >
+    <div>Termék ürlap</div>
+    <form class="form w-50" [formGroup]="productForm" >
+        <div class="row m-3">
+            <label for="productName">Termék neve:</label>
+            <input class="col form-field" name="productName" formControlName="productName" />
+        </div>    
+        <div class="row m-3">
+            <label for="productCategory">Termék kategória:</label>
+            <input class="col form-field" name="productCategory" formControlName="productCategory" />
+        </div> 
+        <form class="form w-50" [formGroup]="productDiscForm" >
+            <div class="row m-3">
+                <label for="productDescription1">Termék leírás 1:</label>
+                <input class="col form-field" name="productDescription1" formControlName="productDescription1" />
+            </div>    
+            <div class="row m-3">
+                <label for="productDescription2">Termék leírás 2:</label>
+                <input class="col form-field" name="productDescription2" formControlName="productDescription2" />
+            </div> 
+            <div class="row m-3">
+                <label for="productDescription1">Termék leírás 3:</label>
+                <input class="col form-field" name="productDescription3" formControlName="productDescription3" />
+            </div>
+        </form>   
+        <div class="row m-3">
+            <label for="productImage">Termék kép elérési útja:</label>
+            <input class="col form-field" name="productImage" formControlName="productImage" />
+        </div>
+        <div class="row m-3">
+            <label for="productPrice">Termék ára:</label>
+            <input class="col form-field" name="productPrice" formControlName="productPrice" />
+        </div>
+        <div class="row m-3">
+            <label for="productBasePrice">Termék alapára:</label>
+            <input class="col form-field" name="productBasePrice" formControlName="productBasePrice" />
+        </div>
+        <div class="row m-3">
+            <label for="isProductPromoted">Termék leárazozz?</label>
+            <input class="col form-field" name="isProductPromoted" formControlName="isProductPromoted" />
+        </div> 
+        <div class="row m-3">
+            <label for="isProductOnSale">Termék promótált?</label>
+            <input class="col form-field" name="isProductOnSale" formControlName="isProductOnSale" />
+        </div> 
+        <div class="row m-3">
+            <button class="col btn btn-primary" (click)="saveProduct()">Mentés</button>
+        </div>
+    </form>
+</div>

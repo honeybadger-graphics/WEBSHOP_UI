@@ -1,0 +1,28 @@
+<div class="d-flex flex-column align-items-center justify-content-center" >
+    <div>Raktárkészlet kereső</div>
+    <form class="form w-50" [formGroup]="input" >
+        <div class="row m-3">
+            <label for="prodName">Keresés (Termék név):</label>
+            <input class="col form-field" name="prodName" formControlName="prodName" />
+        </div>    
+        <div class="row m-3">
+            <button class="col btn btn-primary" (click)="find($event)">Keresés</button>
+        </div>
+    </form>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-center" *ngIf="product && stock">
+    <div>Adatok</div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Terméknév:</div> 
+            <div>{{product.productName}}</div>
+        </div>
+        
+        <div class="row m-3">
+            <div style="font-weight: bold;">TermékId:</div>
+            <div>{{product.productId}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Raktárkészlet</div>
+            <div>{{stock.productStocks}}</div>
+        </div>
+</div>

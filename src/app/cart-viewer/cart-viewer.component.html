@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TermékID</th>
+            <th>Mennyiség</th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(cartContent of cart.productCount; track $index) {
+            <tr>
+                <td>{{ cart.productIds[$index]}}</td>
+                <td>{{ cart.productCount[$index] }}</td>
+                
+                <td>
+                    <button class="btn btn-outline-primary" *ngIf="cart.productCount[$index] != 1"
+                    (click)="modifyCount($index,-1)">Elvesz</button>
+                    <button class="btn btn-outline-danger"
+                        (click)="removeProduct($index)">Törlés a kosárból</button>
+                    <button class="btn btn-outline-primary"  *ngIf="cart.productCount[$index] <= 10"
+                        (click)="modifyCount($index,1)">Hozzáad</button>
+                </td>
+        }
+    </tbody>
+</table>

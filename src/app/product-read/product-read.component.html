@@ -1,0 +1,30 @@
+<div class="d-flex flex-column" *ngIf="product">
+    <h2>Adatok</h2>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Termék név:</div> 
+            <div>{{product.productName}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Kategória:</div>
+            <div>{{product.productCategory}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Kép elérési útja:</div>
+            <div>{{product.productImage}}</div>
+        </div>
+        
+        <div class="row m-3">
+            <div style="font-weight: bold;">Leírás:</div>
+            @for (descr of product.productDescription; track $index) {
+                <div>{{descr}}</div>
+            }
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Alap ár:</div>
+            <div>{{product.productBasePrice}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Ár:</div>
+            <div>{{product.productBasePrice}}</div>
+        </div>
+</div>

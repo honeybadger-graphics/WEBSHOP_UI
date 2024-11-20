@@ -1,0 +1,13 @@
+<div class="d-flex flex-column" *ngIf="cartValue">
+    <h2>Adatok</h2>
+        <div class="row m-3">
+            <div class="col">Jelenleg</div> 
+            <div class="col" style="font-weight: bold;">{{cartValue.value}} {{cartValue.currencyCode}}</div>
+            <div class="col">a kosár érték.</div>
+        </div>
+       
+        <div class="row m-3">
+            <button class="col btn btn-primary"  (click)="goToUserCart()">Kosárhoz</button>
+            <button class="col btn btn-primary"  (click)="confirm()">Vásárlás</button>
+        </div>
+</div>

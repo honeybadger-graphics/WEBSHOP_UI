@@ -1,0 +1,41 @@
+<div class="d-flex flex-column align-items-center justify-content-center" *ngIf="!signedIn && !registerSucceeded">
+    <div>Kérem, készítsen fiókot a folytatáshoz.</div>
+    <form class="form w-50" [formGroup]="registerForm" (submit)="register($event)">
+        <div class="row m-3">
+            <label for="name">Email*</label>
+            <input class="col form-field" name="email" formControlName="email" />
+        </div>
+        <div class="row m-3">
+            <label for="password">Jelszó*</label>
+            <input class="col form-field" type="password" name="password" formControlName="password" autocomplete="on" />
+        </div>
+        <div class="row m-3">
+            <label for="confirmPassword">Jelszó mégegyszer*</label>
+            <input class="col form-field" type="password" name="confirmPassword" formControlName="confirmPassword" autocomplete="on" />
+        </div>
+        <div class="row m-3" *ngIf="registerFailed">
+            <label style="color: red">Regisztrálásási hiba</label>
+        </div>
+        <div class="row m-3" *ngFor="let error of errors">
+            <label style="color: red">{{error}}</label>
+        </div>
+        <div class="row m-3">
+            <button class="col btn btn-primary" [disabled]="!registerForm.valid" type="submit">Regisztrálás</button>
+        </div>
+    </form>
+    <div>
+        <h4>Adatkezelés</h4>
+        <div>
+            A regisztrálás megkezdésével elfogadja a webshop adatkezelési nyilatkozatát.
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="signedIn">
+    <h4>Be van jelentkezve</h4>
+    <div>
+        Lépjen ki a fiókból, hogy új fiókot tudjon regisztrálni!
+    </div>
+</div>

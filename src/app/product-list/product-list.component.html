@@ -1,0 +1,58 @@
+<div class="row m-3" *ngIf="categorySwitch">
+    <p>Megjelenítendő termékek kategóriája</p>
+    <select #numberOfProdToDisp (change)="onSelectedForCategory(numberOfProdToDisp.value)">
+        
+        <option>string</option>
+        <option>string1</option>
+        <option>string2</option>
+        <option>string3</option>
+    </select>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Kép</th>
+            <th>Termék név</th>
+            <th>Kategória</th>
+            <th>Eredeti ár</th>
+            <th>Aktuális ár </th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(product of products; track $index) {
+            <tr>
+                <td>{{ product.productImage}}</td>
+                <td><a href="/product-read/{{product.productName}}">{{ product.productName}}</a></td>
+                <td>{{product.productCategory}}</td>
+                <td>{{product.productBasePrice}} HUF</td>
+                <td>{{product.productPrice}} HUF</td>
+                <td>
+                    <button class="btn btn-outline-primary"
+                        (click)="addToCart(product.productId)">Kosárba</button>
+                    <!--<button class="btn btn-outline-danger"
+                        (click)="deleteCompany(company)">Törlés</button>-->
+                </td>
+        }
+    </tbody>
+</table>
+<div class="row m-3">
+    <button class="btn btn-outline-primary" (click)="prevPage($event)">Előző lap</button>
+    <div class="">Lap: {{page}}</div>
+    <button class="btn btn-outline-primary" (click)="nextPage($event)">Következő lap</button>
+</div>
+<div class="col">
+    <p>Megjelenítendő termékek száma:</p>
+        <select #numberOfProdToDisp (change)="onSelectedForDisplay(numberOfProdToDisp.value)">
+            
+            <option [value]="10" default>10</option>
+            <option [value]="15">15</option>
+            <option [value]="20">20</option>
+            <option [value]="25">25</option>
+        </select>
+    </div>
+<div class="row m-3">
+    @for (product of productRecommend; track $index) {
+        <div class="col"><a href="/product-read/{{product.productName}}">{{ product.productName}}</a></div>
+    }
+</div>

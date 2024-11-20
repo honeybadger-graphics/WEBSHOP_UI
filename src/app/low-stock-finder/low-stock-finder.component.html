@@ -1,0 +1,28 @@
+<div class="d-flex flex-column align-items-center justify-content-center" >
+    <div>Alacsony raktárkészlet kereső</div>
+    <form class="form w-50" [formGroup]="input" >
+        <div class="row m-3">
+            <label for="stockToComperTo">Keresési feltétel:</label>
+            <input class="col form-field" name="stockToComperTo" formControlName="stockToComperTo" />
+        </div>    
+        <div class="row m-3">
+            <button class="col btn btn-primary" (click)="find($event)">Keresés</button>
+        </div>
+    </form>
+</div>
+<table class="table table-striped" *ngIf="stocks">
+    <thead>
+        <tr>
+            <th>Termék kód</th>
+            <th>Raktárkészlet</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(stock of stocks; track $index) {
+            <tr>
+                <td>{{ stock.productId}}</td>
+                <td>{{ stock.productStocks }}</td>
+            </tr>
+        }
+    </tbody>
+</table>

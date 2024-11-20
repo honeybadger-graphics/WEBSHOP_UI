@@ -1,0 +1,76 @@
+<div class="d-flex flex-column" *ngIf="readUserData && userData">
+    <h2>Adatok</h2>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Előnév:</div> 
+            <div>{{userData.userNameTitles}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Vezetéknév:</div>
+            <div>{{userData.userLastName}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Keresztnév:</div>
+            <div>{{userData.userFirstName}}</div>
+        </div>
+        <div class="row m-3">
+            <div style="font-weight: bold;">Cím:</div>
+            <div class="row m-3">
+                <div style="font-weight: bold;">Irányítószám:</div>
+                <div>{{userData.userAddress.postCode}}</div>
+            </div>
+            <div class="row m-3">
+                <div style="font-weight: bold;">Város:</div>
+                <div>{{userData.userAddress.city}}</div>
+            </div>
+            <div class="row m-3">
+                <div style="font-weight: bold;">Utca:</div>
+                <div>{{userData.userAddress.street}}</div>
+            </div>
+            <div class="row m-3">
+                <div style="font-weight: bold;">Házszám:</div>
+                <div>{{userData.userAddress.houseNumber}}</div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <button class="col btn btn-primary"  (click)="modify($event)">Módosítás</button>
+        </div>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-center" *ngIf="!readUserData" >
+    <form class="form w-50" [formGroup]="userDataForm" (submit)="update($event)">
+        <div class="row m-3">
+            <label for="userNameTitles">Előnév</label>
+            <input class="col form-field" name="userNameTitles" formControlName="userNameTitles" />
+        </div>
+        <div class="row m-3">
+            <label for="userLastName">Vezetéknév*</label>
+            <input class="col form-field" name="userLastName" formControlName="userLastName" autocomplete="on" />
+        </div>
+        <div class="row m-3">
+            <label for="userFirstName">Keresztnév*</label>
+            <input class="col form-field" name="userFirstName" formControlName="userFirstName" autocomplete="on" />
+        </div>
+        <div class="row m-3" formGroupName="userAddress">
+            <label for="userAddress">Cím:*</label>
+            
+            <div class="row m-3">
+                <label for="city">Város:*</label>
+                <input class="col form-field" name="city" formControlName="city" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="street">Utca:*</label>
+                <input class="col form-field" name="street" formControlName="street" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="houseNumber">Házszám:*</label>
+                <input class="col form-field" name="houseNumber" formControlName="houseNumber" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="postCode">Irányítószám:*</label>
+                <input class="col form-field" name="postCode" formControlName="postCode" autocomplete="on" />
+            </div>
+        </div>
+        <div class="row m-3">
+            <button class="col btn btn-primary" [disabled]="!userDataForm.valid" type="submit">Frissítés</button>
+        </div>
+    </form>
+</div>

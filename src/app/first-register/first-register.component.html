@@ -1,0 +1,47 @@
+<div class="d-flex flex-column align-items-center justify-content-center" >
+    <div>Please create your user account to continue.</div>
+    <form class="form w-50" [formGroup]="userData" (submit)="registerData($event)">
+        <div class="row m-3">
+            <label for="name">Előnév</label>
+            <input class="col form-field" name="userNameTitles" formControlName="userNameTitles" />
+        </div>
+        
+        <div class="row m-3">
+            <label for="userLastName">Vezetéknév*</label>
+            <input class="col form-field" name="userLastName" formControlName="userLastName" autocomplete="on" />
+        </div>
+        <div class="row m-3">
+            <label for="userFirstName">Keresztnév*</label>
+            <input class="col form-field" name="userFirstName" formControlName="userFirstName" autocomplete="on" />
+        </div>
+        <div class="row m-3" formGroupName="userAddress">
+            <label for="userAddress">Cím:*</label>
+            
+            <div class="row m-3">
+                <label for="city">Város:*</label>
+                <input class="col form-field" name="city" formControlName="city" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="street">Utca:*</label>
+                <input class="col form-field" name="street" formControlName="street" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="houseNumber">Házszám:*</label>
+                <input class="col form-field" name="houseNumber" formControlName="houseNumber" autocomplete="on" />
+            </div>
+            <div class="row m-3">
+                <label for="postCode">Irányítószám:*</label>
+                <input class="col form-field" name="postCode" formControlName="postCode" autocomplete="on" />
+            </div>
+        </div>
+        <div class="row m-3" *ngIf="userDataFailed">
+            <label style="color: red">Valami nincs rendben.</label>
+        </div>
+        <div class="row m-3" *ngFor="let error of errors">
+            <label style="color: red">{{error}}</label>
+        </div>
+        <div class="row m-3">
+            <button class="col btn btn-primary" [disabled]="!userData.valid" type="submit">Hozzáadás</button>
+        </div>
+    </form>
+</div>

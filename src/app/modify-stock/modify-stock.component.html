@@ -1,0 +1,16 @@
+<div class="d-flex flex-column align-items-center justify-content-center" >
+    <div>Raktárkészlet frissítő</div>
+    <form class="form w-50" [formGroup]="input" >
+        <div class="row m-3">
+            <label for="prodName">Termék neve:</label>
+            <input class="col form-field" name="prodName" formControlName="prodName" />
+        </div>    
+        <div class="row m-3">
+            <label for="stockChange">Raktárkészlet hozzáadás / kivonás:</label>
+            <input class="col form-field" name="stockChange" formControlName="stockChange" />
+        </div>    
+        <div class="row m-3">
+            <button class="col btn btn-primary" (click)="update($event)">Keresés</button>
+        </div>
+    </form>
+</div>
